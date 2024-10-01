@@ -1,0 +1,256 @@
+/* Reset พื้นฐาน */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ปิดการเลื่อนทั้งหมด */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* ปิดการเลื่อนแนวนอนและแนวตั้ง */
+}
+
+/* นำเข้าและตั้งค่าฟอนต์ */
+@font-face {
+    font-family: 'LINESeedSansTH';
+    src: url('fonts/LINESeedSansTH_W_Rg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'LINESeedSansTH', sans-serif;
+    background: url('https://raw.githubusercontent.com/jarmonxd/Image/main/nerobackground%20(1).png') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    position: relative;
+}
+
+/* Overlay เพิ่มความเข้ม */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+    z-index: 0;
+}
+
+/* หน้าโหลด */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000; /* สีพื้นหลังหน้าโหลด */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ให้หน้าโหลดอยู่บนสุด */
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader-logo {
+    width: 100px;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#loading-screen i {
+    color: #ffffff;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* กล่องหลัก */
+.flex-grow-1 {
+    flex: 1;
+}
+
+.container.is-flex.is-justify-content-center.is-align-items-center.is-relative.flex-grow-1 {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* โลโก้ */
+.logo {
+    width: 200px;
+    max-width: 100%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ข้อความพื้นหลัง (นิ่ง) */
+.background-text {
+    position: fixed; /* เปลี่ยนจาก absolute เป็น fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(16px, 3vw, 60px);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    white-space: normal;
+    max-width: 80%;
+    line-height: 1.4;
+    transition: font-size 0.3s ease;
+    z-index: 0;
+}
+
+/* ปุ่ม */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+}
+
+.main-buttons {
+    margin-bottom: 15px;
+}
+
+.download-button {
+    /* ปุ่ม Download Executors อยู่ด้านล่าง */
+}
+
+/* ปุ่มหลัก */
+.button.is-primary.is-outlined.is-rounded.is-medium,
+.button.is-success.is-outlined.is-rounded.is-medium,
+.button.is-link.is-outlined.is-rounded.is-medium {
+    border-radius: 20px; /* เพิ่มความโค้งมน */
+    transition: all 0.3s ease;
+    padding: 12px 24px; /* ปรับ padding สำหรับปุ่มขนาด medium */
+    font-size: 1rem; /* ปรับขนาดฟอนต์ */
+}
+
+.button.is-primary.is-outlined.is-rounded.is-medium {
+    border-color: #00d1b2; /* สีเขียวของ Bulma */
+    color: #00d1b2;
+    background: rgba(0, 209, 178, 0.2);
+}
+
+.button.is-primary.is-outlined.is-rounded.is-medium:hover {
+    background: #00d1b2;
+    color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.button.is-success.is-outlined.is-rounded.is-medium {
+    border-color: #ffdd57; /* สีเหลืองของ Bulma */
+    color: #ffdd57;
+    background: rgba(255, 221, 87, 0.2);
+}
+
+.button.is-success.is-outlined.is-rounded.is-medium:hover {
+    background: #ffdd57;
+    color: #111111;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.button.is-link.is-outlined.is-rounded.is-medium {
+    border-color: #3273dc; /* สีฟ้าของ Bulma */
+    color: #3273dc;
+    background: rgba(50, 115, 220, 0.2);
+}
+
+.button.is-link.is-outlined.is-rounded.is-medium:hover {
+    background: #3273dc;
+    color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* เอฟเฟกต์ Hover บนไอคอน */
+.button .icon i {
+    transition: transform 0.3s ease;
+}
+
+.button:hover .icon i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* การตอบสนองบนคอมพิวเตอร์ใหญ่ */
+@media (min-width: 1200px) {
+    .background-text {
+        max-width: 70%; /* เพิ่มความกว้างบนหน้าจอใหญ่ */
+    }
+    
+    .button.is-medium {
+        padding: 14px 28px; /* ปรับ padding ให้ใหญ่ขึ้นบนคอมพิวเตอร์ */
+        font-size: 1.1rem; /* ปรับขนาดฟอนต์ให้ใหญ่ขึ้น */
+    }
+}
+
+/* การตอบสนองบนมือถือ */
+@media (max-width: 768px) {
+    .background-text {
+        font-size: clamp(14px, 5vw, 50px); /* ปรับขนาดให้เหมาะสมบนหน้าจอเล็ก */
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .button.is-medium {
+        padding: 10px 20px; /* ปรับ padding สำหรับหน้าจอเล็ก */
+        font-size: 0.9rem; /* ปรับขนาดฟอนต์ */
+    }
+}
+
+@media (max-width: 480px) {
+    .background-text {
+        font-size: clamp(12px, 7vw, 40px); /* ปรับขนาดให้เหมาะสมบนหน้าจอเล็กมาก */
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .button.is-medium {
+        padding: 8px 16px; /* ปรับ padding สำหรับหน้าจอเล็กมาก */
+        font-size: 0.8rem; /* ปรับขนาดฟอนต์ */
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.5); /* เพิ่มพื้นหลังให้ footer */
+    color: #ffffff;
+    font-size: 0.8rem;
+}
